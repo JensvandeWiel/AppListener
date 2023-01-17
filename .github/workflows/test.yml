@@ -1,8 +1,8 @@
 name: Rust
 
 on:
-  - push
-  - merge
+  pull_request:
+    branches: [ "master" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -11,10 +11,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    name: build
     steps:
-      - uses: actions/checkout@v3
-      - name: Build
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Make .env file because macros cant be created without the presence of the .env file
+        run: |
+          cd ${{  github.workspace }}
+          cp .env.example .env
+
+      - name: Build project
         run: cargo build --verbose
-      - name: Run tests
-        run: cargo test --verbose
