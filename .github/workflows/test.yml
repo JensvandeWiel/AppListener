@@ -22,5 +22,8 @@ jobs:
           TRIGGER_APP: Chrome.exe
           RUN_APP: 'C:\\Program Files\\Spotify\\Spotify.exe'
 
+      - name: check .env
+        run: cat .env
+
       - name: Build project
         run: cargo build --verbose
