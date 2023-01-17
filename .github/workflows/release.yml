@@ -13,8 +13,9 @@ jobs:
     steps:
       - name: Make .env file because macros cant be created without the presence of the .env file
         run: |
-          cd ${{  github.workspace }}
-          cp .env.example .env
+          cd ${{ github.workspace }}
+          ls ${{ github.workspace }}
+          cp ${{ github.workspace }}.env.example .env
       - uses: actions/checkout@master
       - name: Compile and release
         uses: rust-build/rust-build.action@v1.4.0
