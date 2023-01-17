@@ -16,17 +16,10 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Make envfile
+      - name: Make .env file because macros cant be created without the presence of the .env file
         run: |
-          ls ${{  github.workspace }}
           cd ${{  github.workspace }}
           cp .env.example .env
-
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: dotenv
-          path: .env
 
       - name: Build project
         run: cargo build --verbose
