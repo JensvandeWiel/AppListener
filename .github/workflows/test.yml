@@ -22,8 +22,11 @@ jobs:
           TRIGGER_APP: Chrome.exe
           RUN_APP: 'C:\\Program Files\\Spotify\\Spotify.exe'
 
-      - name: check .env
-        run: cat .env
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: dotenv
+          path: .env
 
       - name: Build project
         run: cargo build --verbose
