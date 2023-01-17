@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  create-envfile:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -21,11 +21,4 @@ jobs:
         with:
           TRIGGER_APP: Chrome.exe
           RUN_APP: 'C:\\Program Files\\Spotify\\Spotify.exe'
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build
         run: cargo build --verbose
