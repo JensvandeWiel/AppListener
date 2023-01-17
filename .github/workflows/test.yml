@@ -1,8 +1,6 @@
 name: Rust
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -13,12 +11,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    name: build
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
+
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1.3
         with:
           TRIGGER_APP: Chrome.exe
           RUN_APP: 'C:\\Program Files\\Spotify\\Spotify.exe'
+
+      - name: Build project
         run: cargo build --verbose
