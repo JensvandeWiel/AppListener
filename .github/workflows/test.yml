@@ -2,7 +2,7 @@ name: Rust
 
 on:
   - push
-  - merge
+  - pull_request
 
 env:
   CARGO_TERM_COLOR: always
