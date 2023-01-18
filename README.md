@@ -8,7 +8,7 @@ App Listener is a simple project that checkes when a certain program is started 
 
  1. Go to [Releases](https://github.com/JensvandeWiel/AppListener/releases/) and dowload the latest release.
  2. Unzip the folder to the location you want to store it.
- 3. Copy the .env.example.com file to .env file and change it to your use case.
+ 3. Copy the .env.example.com file to .env file and change it to your use case. (if you cannot see the .env.example file make sure to enable "Show hidden files" in file explorer)
  4. Start the program after reading the text below.
  
  We recommend letting the program start on boot.
