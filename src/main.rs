@@ -1,12 +1,8 @@
-extern crate sysinfo;
-extern crate dotenv;
 
-#[macro_use]
-extern crate dotenv_codegen;
 
 use sysinfo::{Process, ProcessExt, System, SystemExt};
-use dotenv::dotenv;
 use std::{env, time};
+use std::collections::HashMap;
 use std::env::{Args, Vars};
 use std::fs::File;
 use std::io::Write;
@@ -16,9 +12,10 @@ use std::ptr::null;
 use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
+use dotenvy::dotenv;
+
 
 fn main() {
-
     //create config if not there already
     if !Path::new(".env").exists() {
         let mut file = File::create(".env")
@@ -29,11 +26,19 @@ fn main() {
     // get config ok
     dotenv().ok().expect("Error encountered while loading .env");
 
-    loop {
-        if is_process_running(dotenv!("TRIGGER_APP").to_string()) {
-            let mut app = Command::new(dotenv!("RUN_APP").to_string()).spawn().unwrap();
 
-            while is_process_running(dotenv!("TRIGGER_APP").to_string()) {
+    let mut envr: HashMap<String, String> = HashMap::new();
+
+    for (key, value) in env::vars() {
+        envr.insert(key, value);
+    }
+
+
+    loop {
+        if is_process_running(envr["TRIGGER_APP"].clone()) {
+            let mut app = Command::new(envr["RUN_APP"].clone()).spawn().unwrap();
+
+            while is_process_running(envr["TRIGGER_APP"].clone()) {
 
             }
             app.kill().expect("!kill");
