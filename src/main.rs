@@ -35,8 +35,8 @@ fn main() {
         envr.insert(key, value);
     }
 
-
     loop {
+
         if is_process_running(envr["TRIGGER_APP"].clone()) {
             let mut app = Command::new(envr["RUN_APP"].clone()).spawn().unwrap();
 
@@ -47,12 +47,14 @@ fn main() {
         }
 
 
-        thread::sleep(time::Duration::from_sec(5));
+        thread::sleep(time::Duration::from_secs(5));
     }
 
 }
 fn is_process_running(s: String) -> bool {
-    let sys = System::new_all();
+    let mut sys: System = System::new();
+    sys.refresh_processes();
+
     for (_, process) in sys.processes()
     {
         if process.name().contains(&s){
