@@ -15,7 +15,8 @@ App Listener is a simple project that checkes when a certain program is started 
 ### Windows
  1. Press the windows key and the R key at the same time.
  2. Enter `shell:startup` and press ok.
-![enter image description here](https://supportkb.dell.com/img/ka06P000000HBwWQAW/ka06P000000HBwWQAW_nl_NL_3.jpeg) 
+    
+    ![enter image description here](https://supportkb.dell.com/img/ka06P000000HBwWQAW/ka06P000000HBwWQAW_nl_NL_3.jpeg) 
  3. Make a shortcut of the AppListener.exe and place it in this folder.
  4. Restart your pc to make AppListener start or manually start it.
 
