@@ -1,6 +1,6 @@
 #![windows_subsystem = "windows"]
 
-use sysinfo::{Process, ProcessExt, System, SystemExt};
+use sysinfo::{ProcessExt, System, SystemExt};
 use std::{env, time};
 use std::collections::HashMap;
 use std::env::{Args, Vars};
@@ -45,6 +45,9 @@ fn main() {
             }
             app.kill().expect("!kill");
         }
+
+
+        thread::sleep(time::Duration::from_sec(5));
     }
 
 }
