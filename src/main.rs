@@ -1,4 +1,4 @@
-
+#![windows_subsystem = "windows"]
 
 use sysinfo::{Process, ProcessExt, System, SystemExt};
 use std::{env, time};
@@ -16,6 +16,8 @@ use dotenvy::dotenv;
 
 
 fn main() {
+
+
     //create config if not there already
     if !Path::new(".env").exists() {
         let mut file = File::create(".env")
