@@ -2,6 +2,7 @@
 
 use sysinfo::{ProcessExt, System, SystemExt};
 use std::{env, time};
+use std::borrow::Borrow;
 use std::collections::HashMap;
 use std::env::{Args, Vars};
 use std::fs::File;
@@ -44,6 +45,7 @@ fn main() {
 
             }
             app.kill().expect("!kill");
+            drop(app); //improves performance for some reason
         }
 
 
