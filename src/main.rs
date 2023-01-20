@@ -2,9 +2,7 @@
 
 use sysinfo::{ProcessExt, System, SystemExt};
 use std::{env, time};
-use std::borrow::Borrow;
 use std::collections::HashMap;
-use std::env::{Args, Vars};
 use std::fs::File;
 use std::io::Write;
 use std::path::Path;
